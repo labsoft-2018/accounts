@@ -7,6 +7,6 @@
                         :customer/user-id    {:schema s/Uuid :required true :unique true}
                         :customer/name       {:schema s/Str :required true}
                         :customer/email      {:schema s/Str :required true :unique true}
-                        :customer/picture    {:schema s/Str :required true}
+                        :customer/picture    {:schema s/Str :required false}
                         :customer/created-at {:schema time/LocalDateTime :required true}})
 (s/defschema Customer (schema/skel->schema customer-skeleton))

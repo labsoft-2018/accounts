@@ -10,5 +10,6 @@
                        :carrier/name       {:schema s/Str :required true}
                        :carrier/email      {:schema s/Str :required true}
                        :carrier/vehicle    {:schema Vehicle :required true}
+                       :carrier/picture    {:schema s/Str :required false}
                        :carrier/created-at {:schema s/Str :required true}})
 (s/defschema Carrier (schema/skel->schema carrier-skeleton))
