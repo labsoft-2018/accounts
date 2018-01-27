@@ -8,14 +8,14 @@
   :deploy-repositories [["clojars" {:url      "https://clojars.org/repo"
                                     :username :env/clojars_username
                                     :password :env/clojars_password}]]
-  :injections [(require 'common-labsoft.misc)
-               (require 'common-labsoft.time)]
   :plugins [[lein-midje "3.2.1"]]
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [labsoft-2018/common-labsoft "0.9.0-SNAPSHOT"]]
   :resource-paths ["resources"]
   :min-lein-version "2.0.0"
   :profiles {:dev {:aliases {"run-dev" ["trampoline" "run" "-m" "accounts.service/start"]}
-                   :dependencies [[io.pedestal/pedestal.service-tools "0.5.3"]]}
+                   :dependencies [[io.pedestal/pedestal.service-tools "0.5.3"]]
+                   :injections [(require 'common-labsoft.misc)
+                                (require 'common-labsoft.time)]}
              :uberjar {:aot [accounts.service]}}
   :main ^{:skip-aot true} accounts.service)
