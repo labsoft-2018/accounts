@@ -6,6 +6,7 @@
             [accounts.controllers.carrier :as controllers.carrier]
             [accounts.controllers.customer :as controllers.customer]
             [accounts.wire.carrier :as wire.carrier]
+            [accounts.wire.customer :as wire.customer]
             [io.pedestal.http.route.definition :refer [defroutes]]
             [io.pedestal.http.body-params :as body-params]
             [schema.core :as s]
@@ -62,7 +63,8 @@
         {:get [:carrier-by-user-id carrier-by-user-id]}]]
 
       ["/customers"
-       {:post [:new-customer ^:interceptors [(int-auth/allow-scopes? "auth")]
+       {:post [:new-customer ^:interceptors [(int-auth/allow-scopes? "auth")
+                                             (int-schema/coerce wire.customer/NewCustomer)]
                new-customer]}
 
        ["/:id" ^:interceptors [(int-adapt/path->uuid :id :customer-id)

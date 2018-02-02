@@ -7,7 +7,7 @@
 (s/defschema Vehicle (apply s/enum vehicle-types))
 
 (def carrier-skeleton {:carrier/id         {:schema s/Uuid :id true}
-                       :carrier/user-id    {:schema s/Uuid :required true :unique true}
+                       :carrier/user-id    {:schema s/Uuid :required true}
                        :carrier/name       {:schema s/Str :required true}
                        :carrier/email      {:schema s/Str :required true}
                        :carrier/vehicle    {:schema Vehicle :required true}
