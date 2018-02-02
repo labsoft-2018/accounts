@@ -8,6 +8,7 @@
 (s/defn insert! :- models.carrier/Carrier
   [carrier :- models.carrier/Carrier, datomic :- protocols.datomic/IDatomic]
   (let [prepared-carrier (assoc carrier :carrier/created-at (time/now))]
+    (clojure.pprint/pprint prepared-carrier)
     (datomic/insert! :carrier/id prepared-carrier datomic)))
 
 (s/defn lookup! :- models.carrier/Carrier
