@@ -1,7 +1,7 @@
 {
   "env": "dev",
   "service-name": "accounts",
-  "service-password": "-e]{.*oS:U~Zz+~qz6VnU's+[1Vf</",
+  "service-password": "-e]{.*oS:U~Zz+~qz6VnU's+[1Vf12",
   "datomic-endpoint": "datomic:mem://accounts",
   "port": 8740,
   "s3-auth": {
