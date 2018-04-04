@@ -10,6 +10,8 @@
             [accounts.db.datomic.carrier :as datomic.carrier]
             [accounts.controllers.customer :as controllers.customer]
             [accounts.controllers.carrier :as controllers.carrier]
+            [accounts.adapters.customer :as adapters.customer]
+            [accounts.adapters.carrier :as adapters.carrier]
             [schema.core :as s]
             [accounts.db.datomic.customer :as datomic.customer]))
 
@@ -50,7 +52,7 @@
 
       ["/customers"
        {:post [:new-customer ^:interceptors [(int-auth/allow-scopes? "auth")
-                                             (int-schema/coerce models.customer/Customer)]
+                                             (int-schema/coerce models.customer/CustomerRequest)]
                create-customer-route]}
 
        ["/:id" ^:interceptors [(int-adapt/path->uuid :id :customer-id)
@@ -59,7 +61,7 @@
 
       ["/carriers"
        {:post [:new-carrier ^:interceptors [(int-auth/allow-scopes? "auth")
-                                            (int-schema/coerce models.carrier/Carrier)]
+                                            (int-schema/coerce models.carrier/CarrierRequest)]
                create-carrier-route]}
 
        ["/:id" ^:interceptors [(int-adapt/path->uuid :id :carrier-id)
